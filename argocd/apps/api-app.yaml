@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/ninhnguyen/gitops.git # << THAY ĐỔI Ở ĐÂY
+    repoURL: https://github.com/ninhnguyen/gitops.git
     path: k8s
     targetRevision: HEAD
   destination:
