@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: w9-api:1
+        image: w9-api:2 
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
