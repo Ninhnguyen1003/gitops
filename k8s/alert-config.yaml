@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: email-alert-config
-  namespace: demo
+  namespace: demo          
 spec:
   route:
     groupBy: ['alertname']
