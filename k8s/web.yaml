@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web
-  namespace: demo # Ứng dụng sẽ chạy ở ns demo
+  namespace: demo
 spec:
   replicas: 2
   selector:
