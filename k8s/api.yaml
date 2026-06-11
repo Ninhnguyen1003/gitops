@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: w9-api:5 
+        image: w9-api:2 # Đã sửa thành tag số 2 chuẩn đét với Minikube của Ninh
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
@@ -59,4 +59,4 @@ spec:
     port: 8080
     targetPort: 8080
   selector:
-    app: api
+    app: apigit add .
