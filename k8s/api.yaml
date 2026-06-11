@@ -6,7 +6,7 @@ metadata:
   labels:
     app: api
 spec:
-  replicas: 2 # Giữ 2 Pod cho nhẹ máy 8GB
+  replicas: 2
   selector:
     matchLabels:
       app: api
@@ -41,9 +41,9 @@ spec:
           value: api
       steps:
       - setWeight: 25
-      - pause: { duration: 20s } # Chạy thử nghiệm 25% traffic trong 20s để Analysis quét
+      - pause: { duration: 20s }
       - setWeight: 50
-      - pause: { duration: 20s } # Tăng lên 50% traffic và tiếp tục quét
+      - pause: { duration: 20s }
       - setWeight: 100
 ---
 apiVersion: v1
