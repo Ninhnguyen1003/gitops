@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: demo-api-alert-rules
+  namespace: demo
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+  - name: demo-api.rules
+    rules:
+    - alert: DemoApiHighErrorRate
+      expr: |
+        sum(rate(http_requests_total{namespace="demo", app="api", status=~"5.."}[2m]))
+        /
+        sum(rate(http_requests_total{namespace="demo", app="api"}[2m])) > 0.05
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Demo API error rate above 5% for 2m"
+        description: "Error rate for demo/api is > 5% over the last 2 minutes. Check injected faults or API health."

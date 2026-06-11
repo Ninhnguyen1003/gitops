@@ -5,7 +5,7 @@ metadata:
   namespace: demo          
 spec:
   route:
-    groupBy: ['alertname']
+    groupBy: ['alertname', 'app', 'namespace']
     groupWait: 10s
     groupInterval: 10s
     repeatInterval: 1h

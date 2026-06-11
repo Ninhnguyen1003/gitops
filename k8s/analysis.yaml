@@ -13,6 +13,6 @@ spec:
       prometheus:
         address: http://prometheus-k8s.monitoring.svc.cluster.local:9090 # Check lại endpoint Prometheus của Lab nhé
         query: |
-          sum(rate(http_requests_total{namespace="demo", status!~"5.*"}[1m])) 
+          sum(rate(http_requests_total{namespace="demo", app="api", status!~"5.*"}[1m])) 
           / 
-          sum(rate(http_requests_total{namespace="demo"}[1m]))
+          sum(rate(http_requests_total{namespace="demo", app="api"}[1m]))

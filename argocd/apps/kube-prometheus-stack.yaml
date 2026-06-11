@@ -11,10 +11,10 @@ spec:
     targetRevision: 65.1.1
     helm:
       values: |
-        # Tắt Alertmanager cho nhẹ máy
+        # Bật Alertmanager để có thể gửi cảnh báo email
         alertmanager:
-          enabled: false
-        
+          enabled: true
+
         # Tắt Grafana (chúng ta sẽ xem metric trực tiếp bằng giao diện Prometheus ở port 9090)
         grafana:
           enabled: false
