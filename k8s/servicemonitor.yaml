@@ -5,6 +5,7 @@ metadata:
   namespace: demo
   labels:
     app: api
+    release: kube-prometheus-stack 
 spec:
   selector:
     matchLabels:
