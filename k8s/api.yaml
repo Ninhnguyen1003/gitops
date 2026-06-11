@@ -17,16 +17,23 @@ spec:
     spec:
       containers:
       - name: api
-        image: w9-api:2 # Bắt buộc phải là số 2 để Minikube tìm thấy ảnh dưới máy local
+        image: w9-api:2 
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 8080
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
         env:
         - name: ERROR_RATE
-          value: "0" # Bản v5 sạch lỗi hoàn toàn
+          value: "0"       
         - name: VERSION
-          value: "v5" # Định danh logic hiển thị trên hệ thống là v5
+          value: "v2"      
         readinessProbe:
           httpGet:
             path: /healthz
@@ -41,9 +48,9 @@ spec:
           value: api
       steps:
       - setWeight: 25
-      - pause: { duration: 20s }
+      - pause: { duration: 1m }   
       - setWeight: 50
-      - pause: { duration: 20s }
+      - pause: { duration: 1m }   
       - setWeight: 100
 ---
 apiVersion: v1
