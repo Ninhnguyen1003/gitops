@@ -33,11 +33,17 @@ spec:
             port: 8080
   strategy:
     canary:
+      analysis:
+        templates:
+        - templateName: api-success-rate
+        args:
+        - name: service-name
+          value: api
       steps:
       - setWeight: 25
-      - pause: {} # Chờ chúng ta duyệt tay
+      - pause: { duration: 20s } # Chạy thử nghiệm 25% traffic trong 20s để Analysis quét
       - setWeight: 50
-      - pause: { duration: 30s }
+      - pause: { duration: 20s } # Tăng lên 50% traffic và tiếp tục quét
       - setWeight: 100
 ---
 apiVersion: v1

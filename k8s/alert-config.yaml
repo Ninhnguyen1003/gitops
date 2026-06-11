@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: email-alert-config
+  namespace: demo
+spec:
+  route:
+    groupBy: ['alertname']
+    groupWait: 10s
+    groupInterval: 10s
+    repeatInterval: 1h
+    receiver: 'Gmail-Receiver'
+  receivers:
+  - name: 'Gmail-Receiver'
+    emailConfigs:
+    - to: 'ninhnguyen130604@gmail.com' # Sửa thành Email cá nhân của Ninh nè
+      from: 'your-alerts-sender@gmail.com'
+      smarthost: 'smtp.gmail.com:587'
+      authUsername: 'your-alerts-sender@gmail.com'
+      authPassword: 'your-app-password-go-here'
+      requireTLS: true
