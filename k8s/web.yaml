@@ -1,4 +1,4 @@
-apiVersion: apps/     # 🔴 Cố tình xóa chữ v1 để xem CI có bắt được lỗi không
+apiVersion: apps/v1    # 🟢 Điền lại chữ v1 chuẩn chỉnh vào đây nhé bạn
 kind: Deployment
 metadata:
   name: web-config
