@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: email-alert-config
-  namespace: demo          
+  namespace: monitoring         
 spec:
   route:
     groupBy: ['alertname', 'app', 'namespace']
@@ -20,4 +20,4 @@ spec:
       authPassword:
         name: alertmanager-smtp-secret 
         key: password                            
-      requireTLS: true
+      requireTLS: trueA
