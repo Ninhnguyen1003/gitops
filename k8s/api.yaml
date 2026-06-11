@@ -17,16 +17,16 @@ spec:
     spec:
       containers:
       - name: api
-        image: w9-api:2 # Bắt buộc phải là số 2 để Minikube tìm thấy ảnh dưới máy local
+        image: w9-api:2 # Đã sửa thành tag số 2 chuẩn đét với Minikube của Ninh
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
           containerPort: 8080
         env:
         - name: ERROR_RATE
-          value: "0" # Bản v5 sạch lỗi hoàn toàn
+          value: "0"
         - name: VERSION
-          value: "v5" # Định danh logic hiển thị trên hệ thống là v5
+          value: "v5"
         readinessProbe:
           httpGet:
             path: /healthz
@@ -59,4 +59,4 @@ spec:
     port: 8080
     targetPort: 8080
   selector:
-    app: api
+    app: apigit add .
