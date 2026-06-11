@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/ninhnguyen/gitops.git
+    repoURL: https://github.com/Ninhnguyen1003/gitops.git
     path: k8s
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
     namespace: demo
