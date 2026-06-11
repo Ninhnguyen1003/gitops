@@ -13,9 +13,11 @@ spec:
   receivers:
   - name: 'Gmail-Receiver'
     emailConfigs:
-    - to: 'ninhnguyen130604@gmail.com' # Sửa thành Email cá nhân của Ninh nè
-      from: 'your-alerts-sender@gmail.com'
+    - to: 'ninhnguyen130604@gmail.com' 
+      from: 'alert-manager@demo.com'
       smarthost: 'smtp.gmail.com:587'
-      authUsername: 'your-alerts-sender@gmail.com'
-      authPassword: 'your-app-password-go-here'
+      authUsername: 'alert-manager@demo.com'
+      authPassword:
+        name: alertmanager-smtp-secret 
+        key: password
       requireTLS: true
