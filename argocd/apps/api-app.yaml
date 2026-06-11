@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: YOUR_REPO_URL_HERE # << Thay URL repo git của bạn vào đây
-    path: k8s # Trỏ vào thư mục k8s của bạn
+    repoURL: https://github.com/ninhnguyen/gitops.git # << THAY ĐỔI Ở ĐÂY
+    path: k8s
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
