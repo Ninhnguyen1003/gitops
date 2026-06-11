@@ -1,10 +1,17 @@
-apiVersion: apps/v1    # 🟢 Điền lại chữ v1 chuẩn chỉnh vào đây nhé bạn
-kind: Deployment
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: v1
+kind: ConfigMap
 metadata:
   name: web-config
   namespace: demo
   annotations:
-    argocd.argoproj.io/sync-wave: "0" # Chạy thứ nhì (sau namespace)
+    argocd.argoproj.io/sync-wave: "0"
 data:
   MESSAGE: "hello from gitops 2026"
 ---
@@ -14,7 +21,7 @@ metadata:
   name: web
   namespace: demo
   annotations:
-    argocd.argoproj.io/sync-wave: "1" # Chạy thứ ba (khi đã có ConfigMap)
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   replicas: 2
   selector:
@@ -30,7 +37,7 @@ spec:
         image: nginx:1.27
         envFrom:
         - configMapRef:
-            name: web-config # Pod đọc data từ ConfigMap một cách an toàn
+            name: web-config
 ---
 apiVersion: v1
 kind: Service
@@ -38,7 +45,7 @@ metadata:
   name: web
   namespace: demo
   annotations:
-    argocd.argoproj.io/sync-wave: "2" # Chạy cuối cùng khi Pod đã lên xong
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   selector:
     app: web
