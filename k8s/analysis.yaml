@@ -11,7 +11,7 @@ spec:
     failureLimit: 1
     provider:
       prometheus:
-        address: http://prometheus-k8s.monitoring.svc.cluster.local:9090 # Check lại endpoint Prometheus của Lab nhé
+        address: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
         query: |
           sum(rate(http_requests_total{namespace="demo", app="api", status!~"5.*"}[1m])) 
           / 
