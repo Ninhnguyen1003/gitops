@@ -345,7 +345,7 @@ Nạp khóa bảo mật mật khẩu ứng dụng Google chạy ngầm dưới c
 ```powershell
 kubectl create secret generic alertmanager-smtp-secret -n monitoring --from-literal=password="zsqgmdmyxmtipqpe" --dry-run=client -o yaml | kubectl apply -f -
 ```
-![ArgoCD Email Alert Degraded](image/Screenshot 2026-06-12 093852.png)
+![ArgoCD Email Alert Degraded](image/Screenshot-2026-06-12-093852.png)
 
 ### Bước 4: Test case tốt
 ...
