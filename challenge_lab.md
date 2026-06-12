@@ -419,6 +419,12 @@ Argo Rollouts đóng băng luồng deploy, kích hoạt Rollback an toàn và ch
 PrometheusRule bắt trúng điều kiện lỗi >5% kéo dài 2 phút → Đổi trạng thái sang [FIRING]
                                    ↓
 Alertmanager tiếp nhận tín hiệu, đóng gói Alert và kích hoạt luồng bắn Email cảnh báo sự cố về hòm thư cá nhân
+                                   ↓
+Alertmanager tiếp nhận tín hiệu, đóng gói Alert và kích hoạt luồng bắn Email về hòm thư cá nhân
+                                    ↓
+Kỹ sư nhận Mail cảnh báo → Mở Terminal chạy lệnh: git revert HEAD --no-edit && git push origin main
+                                    ↓
+ArgoCD kéo Commit Revert về → Tự động đồng bộ hóa trạng thái mong muốn sạch → Ứng dụng hóa XANH MƯỢT (Synced & Healthy)
 ```
 
 ---
