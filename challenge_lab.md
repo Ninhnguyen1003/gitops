@@ -385,10 +385,10 @@ kubectl delete pod -n argo-rollouts -l app.kubernetes.io/name=argo-rollouts
 
 **3. Sự cố sập cổng kết nối mạng ảo Local (`Network Port-forward Offline`)**
 
-- *Hiện trạng:* Giao diện ArgoCD báo trắng xóa, văng bảng lỗi: `"Unable to load data: Request has been terminated. Possible causes: the network is offline..."`.
-![Minikube Network Port-forward Offline](image/api-healthz-disconnect.png.png)
-
-- *Phân tích & Hướng xử lý thay thế:* Do Monitor Stack ngốn tài nguyên quá nặng làm đứt ngầm kết nối Port-forward từ Minikube ra máy thật, chặn đường truyền SMTP ra Internet của Alertmanager. Kỹ sư thực chiến lập tức đổi sang giải pháp truy xuất trực tiếp log báo cháy ngầm (`status=firing`) từ lõi bên trong cụm để làm bằng chứng đanh thép nộp báo cáo:
+- **Hiện trạng:** Khi tiến hành đồng bộ nâng cao, đường ống kết nối mạng ảo bị ngắt kết nối tạm thời văng lỗi `ERR_CONNECTION_REFUSED`. Đồng thời, trang quản trị Prometheus Targets hiển thị trạng thái `DOWN (0/3 up)` hoặc mất kết nối với namespace `demo` do cấu hình sai lệch cổng thu thập metric nội bộ của ứng dụng.
+- **Xử lý:** - Thực hiện khởi chạy lại câu lệnh thông suốt mạng ảo chuyên biệt: `kubectl port-forward svc/kube-prometheus-stack-alertmanager -n monitoring 9093:9093`.
+  - Khắc phục triệt để lỗi target bằng cách khởi tạo một tệp manifest độc lập mang tên `servicemonitor-fix.yaml` tại thư mục gốc `D:\gitops`, định cấu hình chỉ định chuẩn xác cổng thu thập dữ liệu metric nội bộ của ứng dụng (`targetPort: 8086`) kèm nhãn hệ thống `release: kube-prometheus-stack`. Tiến hành nạp đè cấu hình xuống cụm bằng lệnh: `kubectl apply -f servicemonitor-fix.yaml --validate=false` và thực hiện restart Pod Prometheus để bốc cấu hình sạch.
+- **Kết quả:** Mục thu thập `serviceMonitor/demo/api-monitor` lập tức hiện hình trở lại vị trí cũ và chính thức **hóa xanh mượt `UP (3/3 up)` thành công 100%** trên bảng điều khiển.
 
 ```powershell
 kubectl logs alertmanager-kube-prometheus-stack-alertmanager-0 -n monitoring -c alertmanager --tail=50
