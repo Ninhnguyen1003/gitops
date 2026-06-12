@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: demo
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Chạy đầu tiên vĩnh viễn
+    argocd.argoproj.io/sync-wave: "-1" 

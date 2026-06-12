@@ -3,7 +3,7 @@ name: validate
 on:
   pull_request:
     paths:
-      - "k8s/**" # Chỉ chạy khi có sự thay đổi file trong thư mục k8s
+      - "k8s/**" 
 
 jobs:
   validate:

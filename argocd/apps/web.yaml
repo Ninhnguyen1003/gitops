@@ -4,7 +4,7 @@ metadata:
   name: web
   namespace: argocd
 spec:
-  project: default # 🟢 ĐÂY LÀ DÒNG BỊ THIẾU (Bắt buộc phải có để tránh lỗi 'spec.project: Required value')
+  project: default 
   source:
     repoURL: https://github.com/Ninhnguyen1003/gitops.git
     targetRevision: main
