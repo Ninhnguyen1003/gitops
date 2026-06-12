@@ -20,4 +20,4 @@ spec:
       authPassword:
         name: alertmanager-smtp-secret 
         key: password                            
-      requireTLS: trueA
+      requireTLS: true
