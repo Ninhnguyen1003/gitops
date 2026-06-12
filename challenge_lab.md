@@ -86,7 +86,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/KhangNinhNguyen/gitops.git
+    repoURL: https://github.com/ninhnguyen1003/gitops.git
     targetRevision: HEAD
     path: argocd/apps
   destination:
@@ -218,7 +218,7 @@ spec:
     canary:
       steps:
         - setWeight: 25
-        - pause: {} # Tạm dừng vô hạn để người vận hành kiểm tra bằng tay
+        - pause: {}
         - setWeight: 50
         - pause: { duration: 30s }
         - setWeight: 100
